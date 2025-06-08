@@ -1,102 +1,56 @@
+
 <!doctype html>
-<html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg"
-    data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
-
-
-<!-- Mirrored from themesbrand.com/velzon/html/master/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 29 Oct 2024 07:29:52 GMT -->
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-
-    <title>@yield('title') - Admin Dashboard</title>
-    {{-- Điền các link CSS dùng chung --}}
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/admins/images/favicon.ico') }}">
-
-    <!-- jsvectormap css -->
-    <link href="{{ asset('assets/admins/libs/jsvectormap/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <!--Swiper slider css-->
-    <link href="{{ asset('assets/admins/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <!-- Layout config Js -->
-    <script src="{{ asset('assets/admins/js/layout.js') }}"></script>
-    <!-- Bootstrap Css -->
-    <link href="{{ asset('assets/admins/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="{{ asset('assets/admins/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{ asset('assets/admins/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- custom Css-->
-    <link href="{{ asset('assets/admins/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <!-- Custom fonts -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles -->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    @stack('styles')
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>@yield('title')</title>
+  <link rel="shortcut icon" type="image/png" href="{{asset('assets/admins/images/logos/logo_gau-removebg-preview.png')}}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{{asset('assets/admins/css/styles.min.css')}}" />
+  @yield('css')
 </head>
 
-<body id="page-top">
-    <div id="layout-wrapper">
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    
+    @include('admins.blocks.sidebar')
 
-        @include('admins.blocks.header')
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
 
-        @include('admins.blocks.siderbar')
 
-        <div class="vertical-overlay"></div>
+      <!--  Header Start -->
+      @include('admins.blocks.header')
+      <!--  Header End -->
 
-        <div class="main-content">
-            <div class="page-content">
 
-                @yield('content')
+      <div class="container-fluid">
 
-            </div>
-
-            @include('admins.blocks.footer')
-
-        </div>
+        @yield('content')
+        
+      </div>
     </div>
+  </div>
 
-    {{-- Các đoạn script dùng chung --}}
-    <script src="{{ asset('assets/admins/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/admins/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/admins/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/admins/libs/feather-icons/feather.min.js') }}"></script>
-    <script src="{{ asset('assets/admins/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
-    <script src="{{ asset('assets/admins/js/plugins.js') }}"></script>
+  {{-- @include('adminss.blocks.footer') --}}
 
-    <!-- apexcharts -->
-    <script src="{{ asset('assets/admins/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    <!-- Vector map-->
-    <script src="{{ asset('assets/admins/libs/jsvectormap/jsvectormap.min.js') }}"></script>
-    <script src="{{ asset('assets/admins/libs/jsvectormap/maps/world-merc.js') }}"></script>
+  
+  <script src="{{asset('assets/admins/libs/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/admins/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('assets/admins/js/sidebarmenu.js')}}"></script>
+  <script src="{{asset('assets/admins/js/app.min.js')}}"></script>
+  <script src="{{asset('assets/admins/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
+  <script src="{{asset('assets/admins/libs/simplebar/dist/simplebar.js')}}"></script>
+  <script src="{{asset('assets/admins/js/dashboard.js')}}"></script>
 
-    <!--Swiper slider js-->
-    <script src="{{ asset('assets/admins/libs/swiper/swiper-bundle.min.js') }}"></script>
-
-    <!-- Dashboard init -->
-    <script src="{{ asset('assets/admins/js/pages/dashboard-ecommerce.init.js') }}"></script>
-
-    <!-- App js -->
-    <script src="{{ asset('assets/admins/js/app.js') }}"></script>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-    <!-- Custom scripts -->
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-    @yield('JS')
+  @yield('js')
 </body>
 
 </html>
