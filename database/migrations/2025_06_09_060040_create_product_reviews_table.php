@@ -6,18 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->text('content');
-            $table->foreignId('parent_id')->nullable()->constrained('comments')->onDelete('cascade');
+
+            $table->tinyInteger('stars')->nullable()->unsigned(); // nếu có đánh giá sao
+            $table->text('content')->nullable();                  // nội dung đánh giá/bình luận
+            $table->foreignId('parent_id')->nullable()->constrained('product_reviews')->onDelete('cascade'); // reply
             $table->timestamps();
         });
     }
 
     public function down(): void {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('product_reviews');
     }
 };
 

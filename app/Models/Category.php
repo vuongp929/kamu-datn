@@ -7,24 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-      use HasFactory;
-    protected $table = 'categories';    
+    use HasFactory;
+
+    // Định nghĩa bảng mà model này tương ứng
+    protected $table = 'categories';
+
+    // Các thuộc tính có thể gán (fillable)
     protected $fillable = [
-        'hinh_anh',
-        'name',
-        'trang_thai',
+        'name', 
+        'slug' ,
+        'parent_id'
     ];
 
-    protected $casts = [    
-        'trang_thai'=>'boolean'
-    ];
-    
-    public function sanPham(){
-        return $this->hasMany(SanPham::class);
+    public function parent()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+    
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'category_product', 'category_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'product_category', 'category_id', 'product_id')
+                    ->withTimestamps(); // Thêm thông tin thời gian nếu cần
     }
+    
 }
