@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // Tên danh mục
-            $table->string('slug')->unique(); // Slug danh mục
+            $table->string('slug')->unique()->nullable(); // Slug danh mục
             
-            // Thêm cột parent_id để hỗ trợ danh mục cha, cho phép null
+            // Thêm cột trang_thaiđể hỗ trợ danh mục cha, cho phép null
             $table->unsignedBigInteger('parent_id')->nullable();
             // Thiết lập khóa ngoại, tham chiếu đến chính bảng categories
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');

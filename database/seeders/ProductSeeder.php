@@ -3,8 +3,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
-use App\Models\ProductVariant;
 use App\Models\Category;
+use App\Models\ProductVariant;
 
 class ProductSeeder extends Seeder
 {

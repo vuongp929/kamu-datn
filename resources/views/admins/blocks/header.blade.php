@@ -1,86 +1,44 @@
-<header id="page-topbar">
-    <div class="layout-width">
-        <div class="navbar-header d-flex align-items-center justify-content-between">
-            <!-- Logo và Hamburger -->
-            <div class="d-flex align-items-center">
-                <!-- LOGO -->
-                <div class="navbar-brand-box horizontal-logo">
-                    <!-- Logo phiên bản dark -->
-                    <a href="{{ route('dashboard') }}" class="logo logo-dark">
-                        <span class="logo-sm">
-                            <img src="{{ asset('assets/admins/images/logo-sm.png') }}" alt="Logo Small" height="22">
-                        </span>
-                        <span class="logo-lg">
-                            <img src="{{ asset('assets/admins/images/logo-dark.png') }}" alt="Logo Dark" height="17">
-                        </span>
-                    </a>
-                    <!-- Logo phiên bản light -->
-                    <a href="{{ route('dashboard') }}" class="logo logo-light">
-                        <span class="logo-sm">
-                            <img src="{{ asset('assets/admins/images/logo-sm.png') }}" alt="Logo Small" height="22">
-                        </span>
-                        <span class="logo-lg">
-                            <img src="{{ asset('assets/admins/images/logo-light.png') }}" alt="Logo Light" height="17">
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Nút Hamburger Menu -->
-                <button type="button"
-                    class="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
-                    id="topnav-hamburger-icon">
-                    <span class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
+<header class="app-header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item d-block d-xl-none">
+          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+            <i class="ti ti-menu-2"></i>
+          </a>
+        </li>
+       
+      </ul>
+      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                  <i class="ti ti-bell-ringing"></i>
+                  <div class="notification bg-primary rounded-circle"></div>
+                </a>
+              </li>          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="{{asset('assets/admins/images/profile/user-1.jpg')}}" alt="" width="35" height="35" class="rounded-circle">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+              <div class="message-body">
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                  <i class="ti ti-user fs-6"></i>
+                  <p class="mb-0 fs-3">My Profile</p>
+                </a>
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                  <i class="ti ti-mail fs-6"></i>
+                  <p class="mb-0 fs-3">My Account</p>
+                </a>
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                  <i class="ti ti-list-check fs-6"></i>
+                  <p class="mb-0 fs-3">My Task</p>
+                </a>
+                <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+              </div>
             </div>
-
-            <!-- Phần bên phải của header -->
-            <div class="d-flex align-items-center">
-                <!-- Nút Fullscreen -->
-                <div class="ms-1 header-item d-none d-sm-flex">
-                    <button type="button"
-                        class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
-                        data-bs-toggle="fullscreen">
-                        <i class='bx bx-fullscreen fs-22'></i>
-                    </button>
-                </div>
-                <!-- Nút chuyển dark/light mode -->
-                <div class="ms-1 header-item d-none d-sm-flex">
-                    <button type="button"
-                        class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
-                        <i class='bx bx-moon fs-22'></i>
-                    </button>
-                </div>
-                <!-- Dropdown người dùng -->
-                <div class="dropdown ms-sm-3 header-item topbar-user">
-                    <button type="button" class="btn" id="page-header-user-dropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('assets/admins/images/users/avatar-1.jpg') }}"
-                                alt="Header Avatar">
-                            <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name ?? 'User' }}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Administrator</span>
-                            </span>
-                        </span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <h6 class="dropdown-header">Welcome, {{ Auth::user()->name ?? 'User' }}!</h6>
-                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
-                            <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span>Profile</span>
-                        </a>
-                        <form method="POST" action="{{ route('logout') }}" class="d-inline-block w-100">
-                            @csrf
-                            <button type="submit" class="dropdown-item">
-                                <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span>Log Out</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
